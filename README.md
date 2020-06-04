@@ -7,6 +7,12 @@ Package in Go for sending emails. Encapsulates [jordan-wright/email](https://git
 ```go
 emailer := email.NewClient()
 _ := emailer.Sendmail("John Doe", "jd@example.com", "Subject", "Some message")
+
+emailer := email.NewClient()
+emailer.To("John Doe", "john@example.com")
+emailer.Subject("Subject of message")
+emailer.BodyText("A bit of a message")
+_ := emailer.Send()
 ```
 
 ## Configuration

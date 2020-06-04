@@ -112,9 +112,24 @@ func (c *Client) Subject(subject string) {
 	c.emailer.Subject = subject
 }
 
+// BodyText sets the plaintext of the body
+func (c *Client) BodyText(bodyText string) {
+	c.emailer.Text = []byte(bodyText)
+}
+
+// BodyHTML sets the HTML part of the body
+func (c *Client) BodyHTML(bodyHTML string) {
+	c.emailer.HTML = []byte(bodyHTML)
+}
+
 // AttachFile attaches a file to the email Client.
 func (c *Client) AttachFile(filename string) {
 	c.emailer.AttachFile(filename)
+}
+
+// Send sends the prepared email message
+func (c *Client) Send() error {
+	return c.sendSMTPMessage()
 }
 
 // Sendmail sends an email with a given subject and body text to the
