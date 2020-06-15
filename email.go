@@ -45,11 +45,11 @@ func WithSender(name, email string) ClientConfig {
 // WithAuth configures the Client with a username
 // and password for authentication with the SMTP server;
 // sets the corresponding flag useAuth as well.
-func WithAuth(username, password string) ClientConfig {
+func WithAuth(username, password string, useAuth bool) ClientConfig {
 	return func(c *Client) {
 		c.username = username
 		c.password = password
-		c.useAuth = true
+		c.useAuth = useAuth
 	}
 }
 
