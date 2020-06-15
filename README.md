@@ -31,7 +31,7 @@ emailer := email.NewClient(
 
 ```go
 emailer := email.NewClient(
-  email.WithAuth("your.name@example.com", "123456789abcde"),
+  email.WithAuth("your.name@example.com", "123456789abcde", true),
 )
 ```
 
