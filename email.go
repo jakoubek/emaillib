@@ -78,6 +78,11 @@ func NewClient(opts ...ClientConfig) *Client {
 	return &client
 }
 
+func (c *Client) NewMessage() {
+	c.emailer = emaillib.NewEmail()
+	c.emailer.From = c.from
+}
+
 // Debug returns a debug string with all settings in the Client.
 func (c *Client) Debug() string {
 	debug := "From     : " + c.from + "\n" + "Host/Port: " + c.host + ":" + strconv.Itoa(c.port) + "\n" + "Auth?    : " + strconv.FormatBool(c.useAuth) + "\n" + "Username : " + c.username
