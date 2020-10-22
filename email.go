@@ -66,7 +66,7 @@ func WithDontSend() ClientConfig {
 // ClientConfig functions.
 func NewClient(opts ...ClientConfig) *Client {
 	client := Client{
-		from:     "support@jakoubek.net",
+		from:     "",
 		useAuth:  false,
 		dontSend: false,
 		emailer:  emaillib.NewEmail(),
@@ -95,6 +95,11 @@ func (c *Client) Debug() string {
 
 	debug += "==================================\n"
 	return debug
+}
+
+// From sets the from address
+func (c *Client) From(fromName, fromEmail string) {
+	c.emailer.From = buildEmailAddress(fromName, fromEmail)
 }
 
 // To adds an email address to the list of recipient addresses (TO).
