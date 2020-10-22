@@ -9,7 +9,7 @@ import (
 func main() {
 	emailer := email.NewClient(
 		email.WithRelayhost("smtp.fastmail.com", 465),
-		email.WithAuth("your.name@example.com", "123456789abcde"),
+		email.WithAuth("your.name@example.com", "123456789abcde", true),
 		email.WithSender("Example Inc. Customer Service", "info@example.com"),
 		email.WithDontSend(),
 	)
