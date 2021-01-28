@@ -97,6 +97,10 @@ func (c *Client) Debug() string {
 	for i, to := range c.emailer.Cc {
 		debug += fmt.Sprintf("- (%d) %s\n", i, to)
 	}
+	debug += "BCC:\n"
+	for i, to := range c.emailer.Bcc {
+		debug += fmt.Sprintf("- (%d) %s\n", i, to)
+	}
 
 	debug += "==================================\n"
 	return debug
@@ -115,6 +119,11 @@ func (c *Client) To(toName, toEmail string) {
 // CC adds an email address to the list of CC addresses.
 func (c *Client) CC(toName, toEmail string) {
 	c.emailer.Cc = append(c.emailer.Cc, buildEmailAddress(toName, toEmail))
+}
+
+// BCC adds an email address to the list of BCC addresses.
+func (c *Client) BCC(toName, toEmail string) {
+	c.emailer.Bcc = append(c.emailer.Bcc, buildEmailAddress(toName, toEmail))
 }
 
 // Subject sets the email subject to the provided string.
